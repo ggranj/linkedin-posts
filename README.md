@@ -22,5 +22,6 @@ Author: Georgii Sokolov · [LinkedIn](https://linkedin.com/in/georgii-sokolov-go
 | 12 | 2026-04-26 | I left an unauthenticated SOCKS5 port open for one night (drafts file) | [12-solana-bot.txt](drafts/12-solana-bot.txt) | [png](images/post12.png) |
 | 13 | 2026-05-13 | Wired Prometheus + Loki into a personal Go service this week. Three pitfalls, none of them in any tutorial. | [13-grafana-diy.md](posts/13-grafana-diy.md) | [png](images/post13.png) |
 | 14 | 2026-06-26 | Our Redis cluster collapsed under MULTI/EXEC transactions. We never wrote any. | [14-csc-incident.md](posts/14-csc-incident.md) |  |
+| 15 | 2026-10-08 | Your timeout covers waiting for an answer. It doesn't cover waiting for a place in the queue. | [15-ring-queue.md](posts/15-ring-queue.md) |  |
 
 `file date` is the date of the local file; publication dates and links are added by hand.
