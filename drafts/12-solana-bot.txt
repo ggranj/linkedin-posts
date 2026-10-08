@@ -1,0 +1,115 @@
+═══════════════════════════════════════════════════════════════════════
+DRAFT 1 — "I left a port open" (incident war story angle)
+~1290 chars · the strongest hook, recommended
+═══════════════════════════════════════════════════════════════════════
+
+📌 I left an unauthenticated SOCKS5 port reachable from the internet for one night. By morning, a stranger was running a Solana MEV bot through it.
+
+I noticed because the connection list on a hobby VPS had grown weird overnight. Seven persistent TCP sessions, all 8 hours old, all to *.mainnet.block-engine.jito.wtf — Singapore, Amsterdam, SLC, NY, Tokyo, London, Frankfurt. None of them were mine.
+
+❓ Three things had to line up wrong for this to be possible:
+
+- The SSH reverse tunnel from my server to the VPS was bound to 0.0.0.0 instead of 127.0.0.1 (GatewayPorts yes + -R 0.0.0.0:9000)
+- The VPS firewall had ufw allow 9000/tcp from a previous debug session that I'd never closed
+- The SOCKS5 listener on that port had no auth — useful while testing, lethal when exposed
+
+A free residential proxy, advertised by accident. Whoever found it ran a proxy-checker in the afternoon and started a Jito MEV bot at 18:05:53 — all 7 datacenter connections within 4 seconds. Automated, deliberate, and patient.
+
+🧠 Defense-in-depth fix:
+
+- SSH bind to 127.0.0.1, GatewayPorts clientspecified
+- ufw deny 9000, only 22 + 443 public
+- SOCKS5 auth mandatory, even on loopback
+
+💡 Side projects feel like solo work right up until you discover someone else has been using yours. One missing layer is enough.
+
+#security #networking #ssh #socks5 #sideprojects #infosec
+
+---
+
+Gemini Banana prompt:
+
+Cartoon illustration, clean outlines, colorful, slightly humorous, LinkedIn-professional style. A nighttime server-room scene. The blue Go gopher (center) stands in pyjamas with a sleepy face, holding a cup of coffee, looking shocked at a giant monitor. The screen shows seven glowing lines stretching from a central point to seven map pins labeled "Singapore", "Amsterdam", "SLC", "NY", "Tokyo", "London", "Frankfurt" with a small Jito-style bee icon next to each. Above the screen, a clock reads "8h ago". On the left, a half-open door labeled "Port 9000 — no auth" with a "WELCOME" doormat in front. On the right, a stranger's silhouette in a hoodie typing on a laptop with the Solana sun-and-line icon glowing on its lid. No text overlays except the labels described.
+
+
+═══════════════════════════════════════════════════════════════════════
+DRAFT 2 — "Three layers of misconfig" (forensic angle)
+~1280 chars · more analytical, less narrative
+═══════════════════════════════════════════════════════════════════════
+
+📌 A stranger's Solana MEV bot lived in my SOCKS5 logs for 8 hours before I noticed.
+
+On a hobby VPS I run, three small misconfigurations stacked into one open door:
+
+❓ The chain:
+
+1. The SSH reverse tunnel exposing my proxy port was bound to 0.0.0.0, not 127.0.0.1. GatewayPorts was set to "yes" instead of "clientspecified".
+2. The VPS firewall had ufw allow 9000/tcp left over from a debug session weeks earlier.
+3. The SOCKS5 listener on that port had no auth — fine on a closed loopback, very-not-fine on the open internet.
+
+Each one alone was harmless. Together they made my residential proxy a free tool for whoever ran a port scan against the right /24.
+
+🧠 What the attacker did, reconstructed from logs:
+
+- 17:38: ran a proxy-checker, single test connection, then quiet
+- 18:05:53–18:05:57: opened 7 simultaneous TCP sessions, one to each Jito Labs block engine endpoint worldwide. Solana MEV. Persistent. Automated.
+- All 7 still alive 8 hours later when I caught it
+
+💡 Defense-in-depth gets dismissed as bureaucratic until exactly this happens. The fix wasn't clever — bind to loopback, drop the firewall rule, require auth. Three obvious things, none of which were in place.
+
+#security #networking #ssh #infosec #sideprojects #devops
+
+---
+
+Gemini Banana prompt:
+
+Cartoon illustration, clean outlines, colorful, slightly humorous, LinkedIn-professional style. A detective-lab scene at night. The blue Go gopher (center) wears a Sherlock Holmes deerstalker hat and holds a magnifying glass over a corkboard pinned with three red index cards labeled "GatewayPorts: yes", "ufw allow 9000", "no auth". Red strings connect all three to a central photo of a glowing open door. To the side, a smaller corkboard shows a timeline: "17:38 proxy-check" → "18:05 bot launch" → "+8h still live", with the seven Jito datacenter pins lined up underneath the bot launch entry. Warm desk-lamp lighting, calm investigative vibe. No text overlays except the labels described.
+
+
+═══════════════════════════════════════════════════════════════════════
+NOTES
+═══════════════════════════════════════════════════════════════════════
+
+Recommendation: DRAFT 1.
+  - The "by morning, a stranger was running a Solana MEV bot through it"
+    hook is hard to scroll past.
+  - The seven datacenters listed by name is the kind of specific detail
+    that makes the story feel real (same trick as "two log lines a
+    millisecond apart" in the race-condition draft).
+  - The "automated, deliberate, and patient" line is the emotional
+    pivot — it's not vandalism, it's professional abuse. People remember
+    that framing.
+  - DRAFT 2 is more analytically clean but reads colder. Use it if you
+    want to brand yourself as "infra/security thinker" rather than
+    "engineer with stories".
+
+What's deliberately kept OUT of both:
+  - No mention of VPN, anti-DPI, traffic obfuscation, Thailand, the actual
+    country of the residential exit, the project's name, transport
+    protocol names (VLESS, Reality, XHTTP).
+  - "Hobby VPS" + "side project" framing only. Plausibly anything from
+    a personal lab to a pet API gateway.
+  - The Solana MEV / Jito detail is fine to keep — it identifies what
+    the attacker did, not what your project does. If anything it makes
+    your project look MORE generic ("just a SOCKS5 someone abused").
+
+About the "money/survival" line: not added here — this post sells itself
+on the story. Keeping the emotional register clean. If you want it,
+I'd append a single sentence to the closing 💡:
+  "...One missing layer is enough. And every hobby project that touches
+   the internet eventually attracts people who treat your infra like
+   theirs — best to be ready before that hour, not after."
+But I genuinely think it dilutes. Your call.
+
+Cross-reference: this post pairs with Draft 1 of post11 (the side-projects
+gym manifesto), which has a teaser line:
+  "Closed a misconfigured port on a hobby VPS that, it turns out, a
+   stranger had been quietly using for several hours straight. (...)
+   Full incident write-up coming in a separate post"
+Post12 here delivers on that teaser. Keep the publishing order: post11
+first to plant the hook, post12 a few days later to land the payoff.
+
+Length checks:
+  Draft 1: ~1290 chars
+  Draft 2: ~1280 chars
+Both within your 900-1300 range.
