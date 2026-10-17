@@ -1,4 +1,4 @@
-<!-- file date: 2026-10-17 · committed before publication; published on LinkedIn: (add link) -->
+<!-- file date: 2026-10-17 · committed before publication; published on LinkedIn 2026-10-17: https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937 -->
 
 📌 The experiment ended a week ago. Its network call didn't.
 

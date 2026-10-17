@@ -23,6 +23,6 @@ Author: Georgii Sokolov · [LinkedIn](https://linkedin.com/in/georgii-sokolov-go
 | 13 | 2026-05-13 | Wired Prometheus + Loki into a personal Go service this week. Three pitfalls, none of them in any tutorial. | [13-grafana-diy.md](posts/13-grafana-diy.md) | [png](images/post13.png) |
 | 14 | 2026-06-26 | Our Redis cluster collapsed under MULTI/EXEC transactions. We never wrote any. | [14-csc-incident.md](posts/14-csc-incident.md) |  |
 | 15 | 2026-10-08 | Your timeout covers waiting for an answer. It doesn't cover waiting for a place in the queue. | [15-ring-queue.md](posts/15-ring-queue.md) |  |
-| 16 | 2026-10-17 | The experiment ended a week ago. Its network call didn't. | [16-ab-critical-path.md](posts/16-ab-critical-path.md) |  |
+| 16 | 2026-10-17 | [The experiment ended a week ago. Its network call didn't.](https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937) | [16-ab-critical-path.md](posts/16-ab-critical-path.md) |  |
 
 `file date` is the date of the local file; publication dates and links are added by hand.
