@@ -26,3 +26,14 @@ Author: Georgii Sokolov · [LinkedIn](https://linkedin.com/in/georgii-sokolov-go
 | 16 | 2026-10-17 | [The experiment ended a week ago. Its network call didn't.](https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937) | [16-ab-critical-path.md](posts/16-ab-critical-path.md) |  |
 
 `file date` is the date of the local file; publication dates and links are added by hand.
+
+## Authorship and timestamps
+
+Every text here is my own, written from my own production work. Three independent records back the dates:
+
+- **Git history** - each post is committed before it is published on LinkedIn; commits from 2026-10-18 on are SSH-signed.
+- **OpenTimestamps** - `proofs/` holds a `.ots` proof for every file, anchoring its hash in the Bitcoin blockchain. Verify with `ots verify -f posts/16-ab-critical-path.md proofs/posts/16-ab-critical-path.md.ots` (client: `pip install opentimestamps-client`). A fresh proof shows "pending" for a few hours, then `ots upgrade` completes it.
+- **Wayback Machine** - independent snapshots: [this repo, 2026-10-18](https://web.archive.org/web/20261018125416/https://github.com/ggranj/linkedin-posts), [post 16 on LinkedIn, 2026-10-18](https://web.archive.org/web/20261018125252/https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937).
+
+Reuse is governed by [LICENSE.md](LICENSE.md) (CC BY-NC-ND 4.0): share with attribution, no changes, no commercial use.
+
