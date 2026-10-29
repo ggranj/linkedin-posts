@@ -34,7 +34,7 @@ Every text here is my own, written from my own production work. Three independen
 
 - **Git history** - each post is committed before it is published on LinkedIn; commits from 2026-10-18 on are SSH-signed.
 - **OpenTimestamps** - `proofs/` holds a `.ots` proof for every file, anchoring its hash in the Bitcoin blockchain. Verify with `ots verify -f posts/16-ab-critical-path.md proofs/posts/16-ab-critical-path.md.ots` (client: `pip install opentimestamps-client`). A fresh proof shows "pending" for a few hours, then `ots upgrade` completes it.
-- **Wayback Machine** - independent snapshots: [this repo, 2026-10-18](https://web.archive.org/web/20261018125416/https://github.com/ggranj/linkedin-posts), [post 16 on LinkedIn, 2026-10-18](https://web.archive.org/web/20261018125252/https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937).
+- **Wayback Machine** - independent snapshots: [this repo, 2026-10-18](https://web.archive.org/web/20261018125416/https://github.com/ggranj/linkedin-posts), [post 16 on LinkedIn, 2026-10-18](https://web.archive.org/web/20261018125252/https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937), [post 17 on LinkedIn, 2026-10-29 (archive.ph)](https://archive.ph/8fKhm), [this repo, 2026-10-29](https://web.archive.org/web/20261029134330/https://github.com/ggranj/linkedin-posts).
 
 Reuse is governed by [LICENSE.md](LICENSE.md) (CC BY-NC-ND 4.0): share with attribution, no changes, no commercial use.
 
