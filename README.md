@@ -25,6 +25,7 @@ Author: Georgii Sokolov · [LinkedIn](https://linkedin.com/in/georgii-sokolov-go
 | 15 | 2026-10-08 | Your timeout covers waiting for an answer. It doesn't cover waiting for a place in the queue. | [15-ring-queue.md](posts/15-ring-queue.md) |  |
 | 16 | 2026-10-17 | [The experiment ended a week ago. Its network call didn't.](https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937) | [16-ab-critical-path.md](posts/16-ab-critical-path.md) |  |
 | 17 | 2026-10-27 | [10% of products came back with empty features. No logs, no metrics, two hours.](https://www.linkedin.com/feed/update/urn:li:share:7520892406976786433/) | [17-debug-endpoint.md](posts/17-debug-endpoint.md) |  |
+| 18 | 2026-11-11 | A week of latency spikes every five minutes across three services. The managed Valkey behind them looked healthy on Grafana. It was not. | [18-valkey-main-thread.md](posts/18-valkey-main-thread.md) | [png](images/post18.png) |
 
 `file date` is the date of the local file; publication dates and links are added by hand.
 
