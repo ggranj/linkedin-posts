@@ -26,7 +26,7 @@ Author: Georgii Sokolov · [LinkedIn](https://linkedin.com/in/georgii-sokolov-go
 | 16 | 2026-10-17 | [The experiment ended a week ago. Its network call didn't.](https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937) | [16-ab-critical-path.md](posts/16-ab-critical-path.md) |  |
 | 17 | 2026-10-27 | [10% of products came back with empty features. No logs, no metrics, two hours.](https://www.linkedin.com/feed/update/urn:li:share:7520892406976786433/) | [17-debug-endpoint.md](posts/17-debug-endpoint.md) |  |
 | 18 | 2026-11-11 | [A week of latency spikes every five minutes across three services. The managed Valkey behind them looked healthy on Grafana. It was not.](https://www.linkedin.com/feed/update/urn:li:activity:7525976378140348416/) | [18-valkey-main-thread.md](posts/18-valkey-main-thread.md) | [png](images/post18.png) |
-| 19 | 2026-11-17 | A Go service throttled by CFS at 25 percent CPU. More cores did not help. One env var did. | [19-gomaxprocs-headroom.md](posts/19-gomaxprocs-headroom.md) | [png](images/post19.png) |
+| 19 | 2026-11-17 | [A Go service throttled by CFS at 25 percent CPU. More cores did not help. One env var did.](https://www.linkedin.com/feed/update/urn:li:activity:7528435061029904384/) | [19-gomaxprocs-headroom.md](posts/19-gomaxprocs-headroom.md) | [png](images/post19.png) |
 
 `file date` is the date of the local file; publication dates and links are added by hand.
 
@@ -36,7 +36,7 @@ Every text here is my own, written from my own production work. Three independen
 
 - **Git history** - each post is committed before it is published on LinkedIn; commits from 2026-10-18 on are SSH-signed.
 - **OpenTimestamps** - `proofs/` holds a `.ots` proof for every file, anchoring its hash in the Bitcoin blockchain. Verify with `ots verify -f posts/16-ab-critical-path.md proofs/posts/16-ab-critical-path.md.ots` (client: `pip install opentimestamps-client`). A fresh proof shows "pending" for a few hours, then `ots upgrade` completes it.
-- **Wayback Machine** - independent snapshots: [this repo, 2026-10-18](https://web.archive.org/web/20261018125416/https://github.com/ggranj/linkedin-posts), [post 16 on LinkedIn, 2026-10-18](https://web.archive.org/web/20261018125252/https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937), [post 17 on LinkedIn, 2026-10-29 (archive.ph)](https://archive.ph/8fKhm), [this repo, 2026-10-29](https://web.archive.org/web/20261029134330/https://github.com/ggranj/linkedin-posts).
+- **Wayback Machine** - independent snapshots: [this repo, 2026-10-18](https://web.archive.org/web/20261018125416/https://github.com/ggranj/linkedin-posts), [post 16 on LinkedIn, 2026-10-18](https://web.archive.org/web/20261018125252/https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937), [post 17 on LinkedIn, 2026-10-29 (archive.ph)](https://archive.ph/8fKhm), [this repo, 2026-10-29](https://web.archive.org/web/20261029134330/https://github.com/ggranj/linkedin-posts), [post 19 on LinkedIn, 2026-11-17 (archive.ph)](https://archive.ph/ciK35).
 
 Reuse is governed by [LICENSE.md](LICENSE.md) (CC BY-NC-ND 4.0): share with attribution, no changes, no commercial use.
 
