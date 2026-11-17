@@ -26,6 +26,7 @@ Author: Georgii Sokolov · [LinkedIn](https://linkedin.com/in/georgii-sokolov-go
 | 16 | 2026-10-17 | [The experiment ended a week ago. Its network call didn't.](https://www.linkedin.com/feed/update/urn:li:activity:7517195420394151937) | [16-ab-critical-path.md](posts/16-ab-critical-path.md) |  |
 | 17 | 2026-10-27 | [10% of products came back with empty features. No logs, no metrics, two hours.](https://www.linkedin.com/feed/update/urn:li:share:7520892406976786433/) | [17-debug-endpoint.md](posts/17-debug-endpoint.md) |  |
 | 18 | 2026-11-11 | [A week of latency spikes every five minutes across three services. The managed Valkey behind them looked healthy on Grafana. It was not.](https://www.linkedin.com/feed/update/urn:li:activity:7525976378140348416/) | [18-valkey-main-thread.md](posts/18-valkey-main-thread.md) | [png](images/post18.png) |
+| 19 | 2026-11-17 | A Go service throttled by CFS at 25 percent CPU. More cores did not help. One env var did. | [19-gomaxprocs-headroom.md](posts/19-gomaxprocs-headroom.md) | [png](images/post19.png) |
 
 `file date` is the date of the local file; publication dates and links are added by hand.
 
